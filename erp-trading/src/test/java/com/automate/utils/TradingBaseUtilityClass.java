@@ -201,6 +201,7 @@ public class TradingBaseUtilityClass {
 			}
 
 		}
+		System.out.println("message replace >>>");
 		return replacedMsg;
 	}
 	
