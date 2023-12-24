@@ -33,6 +33,8 @@ import com.automate.DTOclasses.TradingTestResultDTO;
 import com.automate.messageReplacer.MessageReplacer;
 import com.automate.testDataComponents.ExtractTestData;
 
+import net.bytebuddy.utility.RandomString;
+
 
 public class TradingBaseUtilityClass {
 	
@@ -45,7 +47,7 @@ public class TradingBaseUtilityClass {
 	protected static String dbUser = null;
 	protected static String dbPassword = null;
 	Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
-	SimpleDateFormat formatter;
+	protected SimpleDateFormat formatter;
 	protected static String testName="";
 	protected static String testDataFileName="";
 	protected static String testDataSheetName="";
@@ -136,7 +138,7 @@ public class TradingBaseUtilityClass {
 	
 	public void partiesDuplicateGstinActionWhileCreate(WebElement dialogElement, WebElement yesbutton) {
 		try {
-			Thread.sleep(300);
+			Thread.sleep(400);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -202,6 +204,30 @@ public class TradingBaseUtilityClass {
 
 		}
 		return replacedMsg;
+	}
+	
+	public String randomStringGenerator() {
+		String randomString = RandomString.make(10);
+		return randomString;
+	}
+	
+	public int randomNumberGenerator() {
+		int nums=(int) (Math.floor(Math.random()*(900000-300000+1))+300000);
+		return nums;
+	}
+	
+	public String dateGenerator(String type) {
+		String customDate = "";
+		
+		if (type.equalsIgnoreCase("time")) {
+			formatter = new SimpleDateFormat("ddMMyyy_HHmmss");
+			customDate = formatter.format(new Date());
+		} else if (type.equalsIgnoreCase("date")) {
+			formatter = new SimpleDateFormat("dd-MM-yyyy");
+			customDate = formatter.format(new Date());
+		}
+		
+		return customDate;
 	}
 	
 	

@@ -2,7 +2,9 @@ package com.automate.sourcePages;
 
 import java.time.Duration;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -52,7 +54,9 @@ public class NavigationSourcePages extends TradingBaseUtilityClass{
 	}
 	
 	public NavigationSourcePages navigateToCreateVendorFromSearchScreen() {
-		createVendorIcon.click();
+		Actions action=new Actions(driver);
+		action.sendKeys(Keys.F1).perform();
+//		createVendorIcon.click();
 		return this;
 	}
 	
