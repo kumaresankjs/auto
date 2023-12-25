@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
@@ -58,6 +59,7 @@ public class TradingBaseUtilityClass {
 		driver=new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get(property.getProperty("demoUrl"));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("form:login-focus:userId")));
 	}
 	
 	@AfterMethod(alwaysRun = true)
