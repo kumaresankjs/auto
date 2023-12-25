@@ -44,7 +44,9 @@ public class NavigationSourcePages extends TradingBaseUtilityClass{
 	}
 	
 	public NavigationSourcePages navigateToCreateCustomerFromSearchScreen() {
-		createCustomerIcon.click();
+		Actions action=new Actions(driver);
+		action.sendKeys(Keys.F1).perform();
+//		createCustomerIcon.click();
 		return this;
 	}
 	
