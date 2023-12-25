@@ -20,6 +20,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -27,6 +28,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
 
 import com.automate.DTOclasses.DriverInteractElementDTO;
 import com.automate.DTOclasses.TradingTestResultDTO;
@@ -52,14 +54,19 @@ public class TradingBaseUtilityClass {
 	protected static String testDataFileName="";
 	protected static String testDataSheetName="";
 	
+	@Parameters("browserName")
 	@BeforeMethod(alwaysRun = true)
-	public void startBrowser() {
+	public void startBrowser(String browserName) {
 		propertyFile("testingBase");
-		driver=new ChromeDriver();
+		if (browserName.equalsIgnoreCase("chrome")) {
+			driver = new ChromeDriver();
+		} else if (browserName.equalsIgnoreCase("edge")) {
+			driver = new EdgeDriver();
+		}
 		driver.manage().window().maximize();
 		driver.get(property.getProperty("demoUrl"));
 	}
-	
+
 	@AfterMethod(alwaysRun = true)
 	public void quitBrowser() {
 		driver.quit();
