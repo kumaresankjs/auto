@@ -165,7 +165,7 @@ public class CreateVendorSourcePage extends TradingBaseUtilityClass{
 	@FindBy(id = "form:dupNameDialog")
 	WebElement duplicateGstinConfirmationDialog;
 	
-	@FindBy(id = "form:confirmYes2")
+	@FindBy(css = "a[id='form:confirmYes2']")
 	WebElement duplicateGstinConfirmationYesButton;
 	
 	@FindBy(id = "form:confirmNo2")
