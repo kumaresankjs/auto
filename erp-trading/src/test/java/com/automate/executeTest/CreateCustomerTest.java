@@ -16,7 +16,7 @@ public class CreateCustomerTest extends TradingBaseUtilityClass {
 	public void doBeforeTest() {
 		testName="Customer Create";
 		testDataFileName="LoginData";
-		testDataSheetName="Sheet3";
+		testDataSheetName="customer";
 	}
 	
 	

@@ -18,7 +18,7 @@ public class CreateVendorTest extends TradingBaseUtilityClass {
 	public void doBeforeTest() {
 		testName="Vendor Create";
 		testDataFileName="LoginData";
-		testDataSheetName="Sheet4";
+		testDataSheetName="vendor";
 	}
 	
 	
