@@ -10,7 +10,7 @@
 
 		<classes>
 			<class name="com.automate.executeTest.CreateVendorTest" />
-			<!-- <class name="com.automate.executeTest.CreateCustomerTest" /> -->
+			<class name="com.automate.executeTest.CreateCustomerTest" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
