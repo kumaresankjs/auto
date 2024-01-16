@@ -11,12 +11,15 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -28,7 +31,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 
-import com.automate.DTOclasses.DriverInteractElementDTO;
+import com.automate.DTOclasses.DriverInteractElementCommonDTO;
+import com.automate.DTOclasses.DriverInteractElementInvoiceDTO;
+import com.automate.DTOclasses.SalesInvoiceAddProductDataDTO;
 import com.automate.DTOclasses.TradingTestResultDTO;
 import com.automate.messageReplacer.MessageReplacer;
 import com.automate.testDataComponents.ExtractTestData;
@@ -52,6 +57,8 @@ public class TradingBaseUtilityClass {
 	protected static String testDataFileName="";
 	protected static String testDataSheetName="";
 	
+	String ctrlA = Keys.chord(Keys.CONTROL, "a");
+	
 	@BeforeMethod(alwaysRun = true)
 	public void startBrowser() {
 		propertyFile("testingBase");
@@ -66,7 +73,7 @@ public class TradingBaseUtilityClass {
 	}
 	
 	
-	public void selectValueFromList(DriverInteractElementDTO elementDTO) {
+	public void selectValueFromList(DriverInteractElementCommonDTO elementDTO) {
 		propertyFile("jdbc");
 		String query = property.getProperty(elementDTO.getPropertyName());
 		ArrayList<String> listOfDbValues = RetrieveRecords.executeSQLQueryList(query);
@@ -89,6 +96,120 @@ public class TradingBaseUtilityClass {
 						}
 					}
 				} 
+			}
+		}
+	}
+	
+	public void selectValueFromInvoiceDropDownField(DriverInteractElementInvoiceDTO elementDTO) {
+		List<String> givenUserValue = elementDTO.getGivenUserValue();
+		List<String> givenUserOrgCode = elementDTO.getOrgCode();
+		String userValue = givenUserValue.get(0);
+		String orgCode = givenUserOrgCode.get(0);
+		
+		propertyFile("jdbc");
+		String query = property.getProperty(elementDTO.getPropertyName());
+		ArrayList<String> listOfDbValues = RetrieveRecords.executeSQLQueryList(query);
+		int size = listOfDbValues.size();
+		if (size > 0) {
+			for (String values : listOfDbValues) {
+				if (values.equalsIgnoreCase(userValue + " " + orgCode)) {
+					elementDTO.getFieldElement().click();
+					wait.until(ExpectedConditions.visibilityOf(elementDTO.getVisibilityListPanel()));
+					for (WebElement option : elementDTO.getListOfElements()) {
+						String text = option.getText();
+						if (text.equalsIgnoreCase(userValue)) {
+							option.click();
+							try {
+								Thread.sleep(1000);
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+							break;
+						}
+					}
+				} 
+			}
+		}
+	}
+	
+	public void selectValueFromInvoiceAutoComplete(DriverInteractElementInvoiceDTO elementDTO) {
+		List<String> givenUserValue = elementDTO.getGivenUserValue();
+		List<String> givenUserOrgCode = elementDTO.getOrgCode();
+		String userValue = givenUserValue.get(0);
+		String orgCode = givenUserOrgCode.get(0);
+		
+		propertyFile("jdbc");
+		String query = property.getProperty(elementDTO.getPropertyName());
+		ArrayList<String> listOfDbValues = RetrieveRecords.executeSQLQueryList(query);
+		int size = listOfDbValues.size();
+		if (size > 0) {
+			for (String values : listOfDbValues) {
+				if (values.equalsIgnoreCase(userValue + " " + orgCode)) {
+					elementDTO.getFieldElement().sendKeys(userValue);
+					wait.until(ExpectedConditions.visibilityOf(elementDTO.getVisibilityListPanel()));
+					for (WebElement option : elementDTO.getListOfElements()) {
+						String text = option.getText();
+						String[] splitWords = text.split(" - ");
+						if (splitWords.length > 0) {
+							if (splitWords[0].equalsIgnoreCase(userValue)) {
+								option.click();
+								wait.until(ExpectedConditions.visibilityOf(elementDTO.getWaitVisibilityElement()));
+								break;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	public void addProductsToInvoice(SalesInvoiceAddProductDataDTO productDTO) {
+		List<String> productName = productDTO.getProductNameFromExternalData();
+		List<String> quantity = productDTO.getQuantityFromExternalData();
+		List<String> unitPrice = productDTO.getUnitPriceFromExternalData();
+		List<String> givenUserOrgCode = productDTO.getOrgCode();
+		String orgCode = givenUserOrgCode.get(0);
+
+		propertyFile("jdbc");
+		String query = property.getProperty(productDTO.getPropertyName());
+		ArrayList<String> listOfDbValues = RetrieveRecords.executeSQLQueryList(query);
+
+		int productListSize = productName.size();
+		
+		for (int i = 0; i < productListSize; i++) {
+			String productFromDTO = productName.get(i);
+			for (String values : listOfDbValues) {
+				if (values.equalsIgnoreCase(productFromDTO + " " + orgCode)) {
+					productDTO.getProductDescFieldElement().sendKeys(productFromDTO);
+					wait.until(ExpectedConditions.visibilityOf(productDTO.getProductDescVisibilityListPanel()));
+					for (WebElement option : productDTO.getProductDescListOfElements()) {
+						String optionText = option.getText();
+						if (optionText.equalsIgnoreCase(productFromDTO)) {
+							option.click();
+							break;
+						}
+					}
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					
+					productDTO.getQuantityFieldElement().click();
+					productDTO.getQuantityFieldElement().sendKeys(ctrlA);
+					productDTO.getQuantityFieldElement().sendKeys(Keys.DELETE);
+					productDTO.getQuantityFieldElement().sendKeys(quantity.get(i));
+					productDTO.getQuantityFieldElement().sendKeys(Keys.TAB);
+
+					productDTO.getUnitPriceFieldElement().click();
+					productDTO.getUnitPriceFieldElement().sendKeys(ctrlA);
+					productDTO.getUnitPriceFieldElement().sendKeys(Keys.DELETE);
+					productDTO.getUnitPriceFieldElement().sendKeys(unitPrice.get(i));
+					productDTO.getUnitPriceFieldElement().sendKeys(Keys.TAB);
+
+					productDTO.getProductAddButton().click();
+					wait.until(ExpectedConditions.invisibilityOf(productDTO.getProductEditIcon()));
+				}
 			}
 		}
 	}
@@ -147,6 +268,42 @@ public class TradingBaseUtilityClass {
 			yesbutton.click();
 		}
 	}
+	
+	public static Map<String, List<String>> invoiceMergeData(List<Map<String, String>> dataList) {
+        Map<String, List<String>> mergedData = new HashMap<>();
+
+        for (Map<String, String> dataEntry : dataList) {
+            for (Map.Entry<String, String> entry : dataEntry.entrySet()) {
+                String key = entry.getKey();
+                String value = entry.getValue();
+
+                List<String> values = mergedData.getOrDefault(key, new ArrayList<>());
+                values.add(value);
+                mergedData.put(key, values);
+            }
+        }
+
+        return mergedData;
+    }
+	
+	public static SalesInvoiceAddProductDataDTO getProductDetailsFromMergedData(Map<String, List<String>> mergedData) {
+		SalesInvoiceAddProductDataDTO excelDTO=new SalesInvoiceAddProductDataDTO();
+		for(Map.Entry<String, List<String>> datas:mergedData.entrySet()) {
+			String key = datas.getKey();
+			List<String> value = datas.getValue();
+			if (value != null) {
+				if ("productName".equalsIgnoreCase(key)) {
+					excelDTO.setProductNameFromExternalData(value);
+				} else if ("quantity".equalsIgnoreCase(key)) {
+					excelDTO.setQuantityFromExternalData(value);
+				} else if ("unitPrice".equalsIgnoreCase(key)) {
+					excelDTO.setUnitPriceFromExternalData(value);
+				}
+			}
+		}
+		
+		return excelDTO;
+    }
 	
 	public void saveScreenshotOfFailedCases() {
 		formatter= new SimpleDateFormat("dd-MM-yyyy");
@@ -244,6 +401,30 @@ public class TradingBaseUtilityClass {
 		
 		return data;
 		
+	}
+	
+	@DataProvider
+	public Object[][] dataProviderTestWithUniqueColumn() {
+		try {
+			Map<String, List<Map<String, String>>> groupedData = ExtractTestData
+					.getExcelDatasWithUniqueColumn(testDataFileName, testDataSheetName);
+			List<Object> listOfObjects = new ArrayList<>();
+			Object[][] testDataArray = null;
+			for (Entry<String, List<Map<String, String>>> newData : groupedData.entrySet()) {
+				List<Map<String, String>> value = newData.getValue();
+				listOfObjects.add(value);
+			}
+			int testDataListSize = listOfObjects.size();
+			testDataArray = new Object[testDataListSize][1];
+
+			for (int i = 0; i < testDataListSize; i++) {
+				testDataArray[i][0] = listOfObjects.get(i);
+			}
+			return testDataArray;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new Object[0][0];
+		}
 	}
 
 }

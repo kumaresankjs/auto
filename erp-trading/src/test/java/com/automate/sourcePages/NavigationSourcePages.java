@@ -29,6 +29,15 @@ public class NavigationSourcePages extends TradingBaseUtilityClass{
 	@FindBy(id = "form:new")
 	WebElement createVendorIcon;
 	
+	@FindBy(xpath = "//span[text()='Invoices']")
+	WebElement invoicesMenu;
+	
+	@FindBy(xpath = "//span[text()='Sales Invoice']")
+	WebElement searchSalesInvoiceScreen;
+	
+	@FindBy(id = "form:new1")
+	WebElement createSalesInvoieIcon;
+	
 	
 	
 	public NavigationSourcePages(RemoteWebDriver driver) {
@@ -59,6 +68,18 @@ public class NavigationSourcePages extends TradingBaseUtilityClass{
 		Actions action=new Actions(driver);
 		action.sendKeys(Keys.F1).perform();
 //		createVendorIcon.click();
+		return this;
+	}
+	
+	public NavigationSourcePages navigateToSearchSalesInvoiceScreen() {
+		mouseHoverMenus(invoicesMenu, searchSalesInvoiceScreen, createSalesInvoieIcon);
+		return this;
+	}
+	
+	public NavigationSourcePages navigateToCreateSalesInvoiceFromSearchScreen() {
+//		Actions action=new Actions(driver);
+//		action.sendKeys(Keys.F1).perform();
+		createSalesInvoieIcon.click();
 		return this;
 	}
 	

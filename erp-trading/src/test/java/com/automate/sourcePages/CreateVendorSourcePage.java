@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.automate.DTOclasses.DriverInteractElementDTO;
+import com.automate.DTOclasses.DriverInteractElementCommonDTO;
 import com.automate.DTOclasses.TradingTestResultDTO;
 import com.automate.utils.TradingBaseUtilityClass;
 
@@ -242,7 +242,7 @@ public class CreateVendorSourcePage extends TradingBaseUtilityClass{
 	}
 	
 	public CreateVendorSourcePage selectVendorType(String vendorType, String orgCode) {
-		DriverInteractElementDTO elementDTO=new DriverInteractElementDTO();
+		DriverInteractElementCommonDTO elementDTO=new DriverInteractElementCommonDTO();
 		elementDTO.setGivenUserValue(vendorType);
 		elementDTO.setFieldElement(vendorTypeInput);
 		elementDTO.setVisibilityListPanel(vendorTypeInputListPanel);
@@ -254,7 +254,7 @@ public class CreateVendorSourcePage extends TradingBaseUtilityClass{
 	}
 	
 	public CreateVendorSourcePage selectVendorTerritory(String vendorTerritory, String orgCode) {
-		DriverInteractElementDTO elementDTO=new DriverInteractElementDTO();
+		DriverInteractElementCommonDTO elementDTO=new DriverInteractElementCommonDTO();
 		elementDTO.setGivenUserValue(vendorTerritory);
 		elementDTO.setFieldElement(vendorTerritoryInput);
 		elementDTO.setVisibilityListPanel(vendorTerritoryInputListPanel);
@@ -266,7 +266,7 @@ public class CreateVendorSourcePage extends TradingBaseUtilityClass{
 	}
 	
 	public CreateVendorSourcePage selectVendorTier(String vendorTier, String orgCode) {
-		DriverInteractElementDTO elementDTO=new DriverInteractElementDTO();
+		DriverInteractElementCommonDTO elementDTO=new DriverInteractElementCommonDTO();
 		elementDTO.setGivenUserValue(vendorTier);
 		elementDTO.setFieldElement(vendorTierInput);
 		elementDTO.setVisibilityListPanel(vendorTierInputListPanel);
@@ -278,7 +278,7 @@ public class CreateVendorSourcePage extends TradingBaseUtilityClass{
 	}
 	
 	public CreateVendorSourcePage selectVendorDesignation(String vendorDesignation, String orgCode) {
-		DriverInteractElementDTO elementDTO=new DriverInteractElementDTO();
+		DriverInteractElementCommonDTO elementDTO=new DriverInteractElementCommonDTO();
 		elementDTO.setGivenUserValue(vendorDesignation);
 		elementDTO.setFieldElement(vendorDesignationInput);
 		elementDTO.setVisibilityListPanel(vendorDesignationInputListPanel);
@@ -289,7 +289,7 @@ public class CreateVendorSourcePage extends TradingBaseUtilityClass{
 		return this;
 	}
 	public CreateVendorSourcePage selectVendorTitle(String vendorTitle, String orgCode) {
-		DriverInteractElementDTO elementDTO=new DriverInteractElementDTO();
+		DriverInteractElementCommonDTO elementDTO=new DriverInteractElementCommonDTO();
 		elementDTO.setGivenUserValue(vendorTitle);
 		elementDTO.setFieldElement(vendorTitleInput);
 		elementDTO.setVisibilityListPanel(vendorTitleInputListPanel);
@@ -301,7 +301,7 @@ public class CreateVendorSourcePage extends TradingBaseUtilityClass{
 	}
 	
 	public CreateVendorSourcePage selectVendorStatus(String vendorStatus, String orgCode) {
-		DriverInteractElementDTO elementDTO=new DriverInteractElementDTO();
+		DriverInteractElementCommonDTO elementDTO=new DriverInteractElementCommonDTO();
 		elementDTO.setGivenUserValue(vendorStatus);
 		elementDTO.setFieldElement(vendorStatusInput);
 		elementDTO.setVisibilityListPanel(vendorStatusInputListPanel);
@@ -313,7 +313,7 @@ public class CreateVendorSourcePage extends TradingBaseUtilityClass{
 	}
 	
 	public CreateVendorSourcePage selectVendorPaymentTerm(String vendorPaymentTerm, String orgCode) {
-		DriverInteractElementDTO elementDTO=new DriverInteractElementDTO();
+		DriverInteractElementCommonDTO elementDTO=new DriverInteractElementCommonDTO();
 		elementDTO.setGivenUserValue(vendorPaymentTerm);
 		elementDTO.setFieldElement(vendorPaymentTermInput);
 		elementDTO.setVisibilityListPanel(vendorPaymentTermInputListPanel);
@@ -324,7 +324,7 @@ public class CreateVendorSourcePage extends TradingBaseUtilityClass{
 		return this;
 	}
 	public CreateVendorSourcePage selectVendorBillingState(String vendorBillingState, String orgCode) {
-		DriverInteractElementDTO elementDTO=new DriverInteractElementDTO();
+		DriverInteractElementCommonDTO elementDTO=new DriverInteractElementCommonDTO();
 		elementDTO.setGivenUserValue(vendorBillingState);
 		elementDTO.setFieldElement(vendorBillingStateInput);
 		elementDTO.setVisibilityListPanel(vendorBillingStateInputListPanel);
@@ -336,7 +336,7 @@ public class CreateVendorSourcePage extends TradingBaseUtilityClass{
 	}
 	
 	public CreateVendorSourcePage selectVendorBillingCountry(String vendorBillingCountry, String orgCode) {
-		DriverInteractElementDTO elementDTO=new DriverInteractElementDTO();
+		DriverInteractElementCommonDTO elementDTO=new DriverInteractElementCommonDTO();
 		elementDTO.setGivenUserValue(vendorBillingCountry);
 		elementDTO.setFieldElement(vendorBillingCountryInput);
 		elementDTO.setVisibilityListPanel(vendorBillingCountryInputListPanel);
@@ -347,7 +347,7 @@ public class CreateVendorSourcePage extends TradingBaseUtilityClass{
 		return this;
 	}
 	public CreateVendorSourcePage selectVendorShippingState(String vendorShippingState, String orgCode) {
-		DriverInteractElementDTO elementDTO=new DriverInteractElementDTO();
+		DriverInteractElementCommonDTO elementDTO=new DriverInteractElementCommonDTO();
 		elementDTO.setGivenUserValue(vendorShippingState);
 		elementDTO.setFieldElement(vendorShippingStateInput);
 		elementDTO.setVisibilityListPanel(vendorShippingStateInputListPanel);
@@ -358,7 +358,7 @@ public class CreateVendorSourcePage extends TradingBaseUtilityClass{
 		return this;
 	}
 	public CreateVendorSourcePage selectVendorShippingCountry(String vendorShippingCountry, String orgCode) {
-		DriverInteractElementDTO elementDTO=new DriverInteractElementDTO();
+		DriverInteractElementCommonDTO elementDTO=new DriverInteractElementCommonDTO();
 		elementDTO.setGivenUserValue(vendorShippingCountry);
 		elementDTO.setFieldElement(vendorShippingCountryInput);
 		elementDTO.setVisibilityListPanel(vendorShippingCountryInputListPanel);

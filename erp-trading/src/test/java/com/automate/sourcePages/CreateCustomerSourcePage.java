@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.automate.DTOclasses.DriverInteractElementDTO;
+import com.automate.DTOclasses.DriverInteractElementCommonDTO;
 import com.automate.DTOclasses.TradingTestResultDTO;
 import com.automate.utils.TradingBaseUtilityClass;
 
@@ -242,7 +242,7 @@ public class CreateCustomerSourcePage extends TradingBaseUtilityClass{
 	}
 	
 	public CreateCustomerSourcePage selectCustomerType(String customerType, String orgCode) {
-		DriverInteractElementDTO elementDTO=new DriverInteractElementDTO();
+		DriverInteractElementCommonDTO elementDTO=new DriverInteractElementCommonDTO();
 		elementDTO.setGivenUserValue(customerType);
 		elementDTO.setFieldElement(customerTypeInput);
 		elementDTO.setVisibilityListPanel(customerTypeInputListPanel);
@@ -254,7 +254,7 @@ public class CreateCustomerSourcePage extends TradingBaseUtilityClass{
 	}
 	
 	public CreateCustomerSourcePage selectCustomerTerritory(String customerTerritory, String orgCode) {
-		DriverInteractElementDTO elementDTO=new DriverInteractElementDTO();
+		DriverInteractElementCommonDTO elementDTO=new DriverInteractElementCommonDTO();
 		elementDTO.setGivenUserValue(customerTerritory);
 		elementDTO.setFieldElement(customerTerritoryInput);
 		elementDTO.setVisibilityListPanel(customerTerritoryInputListPanel);
@@ -266,7 +266,7 @@ public class CreateCustomerSourcePage extends TradingBaseUtilityClass{
 	}
 	
 	public CreateCustomerSourcePage selectCustomerTier(String customerTier, String orgCode) {
-		DriverInteractElementDTO elementDTO=new DriverInteractElementDTO();
+		DriverInteractElementCommonDTO elementDTO=new DriverInteractElementCommonDTO();
 		elementDTO.setGivenUserValue(customerTier);
 		elementDTO.setFieldElement(customerTierInput);
 		elementDTO.setVisibilityListPanel(customerTierInputListPanel);
@@ -278,7 +278,7 @@ public class CreateCustomerSourcePage extends TradingBaseUtilityClass{
 	}
 	
 	public CreateCustomerSourcePage selectCustomerDesignation(String customerDesignation, String orgCode) {
-		DriverInteractElementDTO elementDTO=new DriverInteractElementDTO();
+		DriverInteractElementCommonDTO elementDTO=new DriverInteractElementCommonDTO();
 		elementDTO.setGivenUserValue(customerDesignation);
 		elementDTO.setFieldElement(customerDesignationInput);
 		elementDTO.setVisibilityListPanel(customerDesignationInputListPanel);
@@ -289,7 +289,7 @@ public class CreateCustomerSourcePage extends TradingBaseUtilityClass{
 		return this;
 	}
 	public CreateCustomerSourcePage selectCustomerTitle(String customerTitle, String orgCode) {
-		DriverInteractElementDTO elementDTO=new DriverInteractElementDTO();
+		DriverInteractElementCommonDTO elementDTO=new DriverInteractElementCommonDTO();
 		elementDTO.setGivenUserValue(customerTitle);
 		elementDTO.setFieldElement(customerTitleInput);
 		elementDTO.setVisibilityListPanel(customerTitleInputListPanel);
@@ -301,7 +301,7 @@ public class CreateCustomerSourcePage extends TradingBaseUtilityClass{
 	}
 	
 	public CreateCustomerSourcePage selectCustomerStatus(String customerStatus, String orgCode) {
-		DriverInteractElementDTO elementDTO=new DriverInteractElementDTO();
+		DriverInteractElementCommonDTO elementDTO=new DriverInteractElementCommonDTO();
 		elementDTO.setGivenUserValue(customerStatus);
 		elementDTO.setFieldElement(customerStatusInput);
 		elementDTO.setVisibilityListPanel(customerStatusInputListPanel);
@@ -313,7 +313,7 @@ public class CreateCustomerSourcePage extends TradingBaseUtilityClass{
 	}
 	
 	public CreateCustomerSourcePage selectCustomerPaymentTerm(String customerPaymentTerm, String orgCode) {
-		DriverInteractElementDTO elementDTO=new DriverInteractElementDTO();
+		DriverInteractElementCommonDTO elementDTO=new DriverInteractElementCommonDTO();
 		elementDTO.setGivenUserValue(customerPaymentTerm);
 		elementDTO.setFieldElement(customerPaymentTermInput);
 		elementDTO.setVisibilityListPanel(customerPaymentTermInputListPanel);
@@ -324,7 +324,7 @@ public class CreateCustomerSourcePage extends TradingBaseUtilityClass{
 		return this;
 	}
 	public CreateCustomerSourcePage selectCustomerBillingState(String customerBillingState, String orgCode) {
-		DriverInteractElementDTO elementDTO=new DriverInteractElementDTO();
+		DriverInteractElementCommonDTO elementDTO=new DriverInteractElementCommonDTO();
 		elementDTO.setGivenUserValue(customerBillingState);
 		elementDTO.setFieldElement(customerBillingStateInput);
 		elementDTO.setVisibilityListPanel(customerBillingStateInputListPanel);
@@ -336,7 +336,7 @@ public class CreateCustomerSourcePage extends TradingBaseUtilityClass{
 	}
 	
 	public CreateCustomerSourcePage selectCustomerBillingCountry(String customerBillingCountry, String orgCode) {
-		DriverInteractElementDTO elementDTO=new DriverInteractElementDTO();
+		DriverInteractElementCommonDTO elementDTO=new DriverInteractElementCommonDTO();
 		elementDTO.setGivenUserValue(customerBillingCountry);
 		elementDTO.setFieldElement(customerBillingCountryInput);
 		elementDTO.setVisibilityListPanel(customerBillingCountryInputListPanel);
@@ -347,7 +347,7 @@ public class CreateCustomerSourcePage extends TradingBaseUtilityClass{
 		return this;
 	}
 	public CreateCustomerSourcePage selectCustomerShippingState(String customerShippingState, String orgCode) {
-		DriverInteractElementDTO elementDTO=new DriverInteractElementDTO();
+		DriverInteractElementCommonDTO elementDTO=new DriverInteractElementCommonDTO();
 		elementDTO.setGivenUserValue(customerShippingState);
 		elementDTO.setFieldElement(customerShippingStateInput);
 		elementDTO.setVisibilityListPanel(customerShippingStateInputListPanel);
@@ -358,7 +358,7 @@ public class CreateCustomerSourcePage extends TradingBaseUtilityClass{
 		return this;
 	}
 	public CreateCustomerSourcePage selectCustomerShippingCountry(String customerShippingCountry, String orgCode) {
-		DriverInteractElementDTO elementDTO=new DriverInteractElementDTO();
+		DriverInteractElementCommonDTO elementDTO=new DriverInteractElementCommonDTO();
 		elementDTO.setGivenUserValue(customerShippingCountry);
 		elementDTO.setFieldElement(customerShippingCountryInput);
 		elementDTO.setVisibilityListPanel(customerShippingCountryInputListPanel);

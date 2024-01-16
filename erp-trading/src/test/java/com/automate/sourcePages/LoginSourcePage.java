@@ -1,6 +1,7 @@
 package com.automate.sourcePages;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -46,6 +47,24 @@ public class LoginSourcePage extends TradingBaseUtilityClass{
 	}
 	
 	public LoginSourcePage enterOrgCode(String orgCode) {
+		orgCodeInput.sendKeys(orgCode);
+		return this;
+	}
+	
+	public LoginSourcePage enterUserIdForInvoiceCreate(List<String> listOfUserId) {
+		String userId = listOfUserId.get(0);
+		userIdInput.sendKeys(userId);
+		return this;
+	}
+	
+	public LoginSourcePage enterPasswordForInvoiceCreate(List<String> listOfPassword) {
+		String password = listOfPassword.get(0);
+		passwordInput.sendKeys(password);
+		return this;
+	}
+	
+	public LoginSourcePage enterOrgCodeForInvoiceCreate(List<String> listOfOrgCode) {
+		String orgCode = listOfOrgCode.get(0);
 		orgCodeInput.sendKeys(orgCode);
 		return this;
 	}

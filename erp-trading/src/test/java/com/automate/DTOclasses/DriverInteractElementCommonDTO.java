@@ -4,13 +4,14 @@ import java.util.List;
 
 import org.openqa.selenium.WebElement;
 
-public class DriverInteractElementDTO {
+public class DriverInteractElementCommonDTO {
 	private String givenUserValue;
 	private WebElement fieldElement;
 	private WebElement visibilityListPanel;
 	private List<WebElement> listOfElements;
 	private String propertyName;
 	private String orgCode;
+	private WebElement waitVisibilityElement;
 	
 	
 	public String getGivenUserValue() {
@@ -52,6 +53,13 @@ public class DriverInteractElementDTO {
 	}
 	public void setOrgCode(String orgCode) {
 		this.orgCode = orgCode;
+	}
+	
+	public WebElement getWaitVisibilityElement() {
+		return waitVisibilityElement;
+	}
+	public void setWaitVisibilityElement(WebElement waitVisibilityElement) {
+		this.waitVisibilityElement = waitVisibilityElement;
 	}
 	
 
