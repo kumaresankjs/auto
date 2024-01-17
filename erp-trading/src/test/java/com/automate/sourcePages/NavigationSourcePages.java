@@ -77,9 +77,9 @@ public class NavigationSourcePages extends TradingBaseUtilityClass{
 	}
 	
 	public NavigationSourcePages navigateToCreateSalesInvoiceFromSearchScreen() {
-//		Actions action=new Actions(driver);
-//		action.sendKeys(Keys.F1).perform();
-		createSalesInvoieIcon.click();
+		Actions action=new Actions(driver);
+		action.sendKeys(Keys.F1).perform();
+//		createSalesInvoieIcon.click();
 		return this;
 	}
 	
