@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
-	<test thread-count="5" name="Regression">
-		<groups>
-			<run>
-				<include name="ete"/>
-			</run>
-		</groups>
+ <test thread-count="5" name="Regression">
+  <groups>
+   <run>
+    <include name="ete" />
+   </run>
+  </groups>
 
-		<classes>
-			<class name="com.automate.executeTest.CreateVendorTest" />
-			<class name="com.automate.executeTest.CreateCustomerTest" />
-		</classes>
-	</test> <!-- Test -->
+  <classes>
+   <class name="com.automate.executeTest.CreateVendorTest" />
+   <class name="com.automate.executeTest.CreateCustomerTest" />
+   <class name="com.automate.executeTest.CreateSalesInvoiceTest" />
+  </classes>
+  
+ </test> <!-- Test -->
 </suite> <!-- Suite -->

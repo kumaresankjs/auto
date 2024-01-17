@@ -3,7 +3,7 @@ package com.automate.executeTest;
 import java.util.List;
 import java.util.Map;
 
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.automate.DTOclasses.SalesInvoiceAddProductDataDTO;
@@ -14,14 +14,14 @@ import com.automate.utils.TradingBaseUtilityClass;
 
 public class CreateSalesInvoiceTest extends TradingBaseUtilityClass {
 
-	@BeforeTest(alwaysRun = true)
+	@BeforeClass(alwaysRun = true)
 	public void getExcelDatas() {
 		testDataFileName = "LoginData";
 		testDataSheetName = "salesInvoice";
 		testName = "Create Sales invoice";
 	}
 
-	@Test(groups = "Regression", dataProvider = "dataProviderTestWithUniqueColumn")
+	@Test(groups = "ete", dataProvider = "dataProviderTestWithUniqueColumn")
 	public void createSalesInvoice(List<Map<String,String>> data) {
 		Map<String, List<String>> mergedUniqueIdData = invoiceMergeData(data);
 		SalesInvoiceAddProductDataDTO productDetailsDTO = getProductDetailsFromMergedData(mergedUniqueIdData);
